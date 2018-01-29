@@ -4,14 +4,16 @@ include_once 'config.php';
 
 $status_sql = "SELECT `system_status`, `version_code`, `version_name` FROM `configuration`";
 $status_result = $con->query($status_sql);
-$status_row = mysqli_fetch_assoc($status_result);
 
 $emptyarray = array();
 
-if ($status_row['system_status'] == "1") {
-    $emptyarray[] = $status_row;
+if (mysqli_num_rows($status_result) != 0) {
+
+    array_push($emptyarray, array("status" => "0"));
+
+    $emptyarray[] = mysqli_fetch_assoc($status_result);
 } else {
-    $emptyarray[] = array('system_status' => "0");
+    array_push($emptyarray, array("status" => "1"));
 }
 
 echo json_encode($emptyarray);
