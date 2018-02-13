@@ -8,8 +8,9 @@ $semester = filter_input(INPUT_POST, 'semester');
 $mobile_number = filter_input(INPUT_POST, 'mobile_number');
 $gender = filter_input(INPUT_POST, 'gender');
 $age = filter_input(INPUT_POST, 'age');
+$credit_status = filter_input(INPUT_POST, 'credit_status');
 
-$sql = "INSERT INTO `members`(`name`, `department`, `semester`, `mobile_number`, `gender`, `age`, `insertion_date_time`, `inserter`) VALUES ('$name','$department','$semester','$mobile_number','$gender','$age',CONVERT_TZ(NOW(),'-05:30','+00:00'),'0')";
+$sql = "INSERT INTO `members`(`name`, `department`, `semester`, `mobile_number`, `gender`, `age`, `insertion_date_time`, `inserter`,`credit_status`) VALUES ('$name','$department','$semester','$mobile_number','$gender','$age',CONVERT_TZ(NOW(),'-05:30','+00:00'),'0','$credit_status')";
 
 if (!$con->query($sql)) {
     $arr = array('status' => "1", 'error' => $con->error);

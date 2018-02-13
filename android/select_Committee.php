@@ -2,10 +2,7 @@
 
 include_once 'config.php';
 
-$username = $_POST['username'];
-$password = $_POST['password'];
-
-$status_sql = "SELECT `id`,`role` FROM `committee` WHERE username='$username' and password='$password'";
+$status_sql = "SELECT `role`,`username`,`department_id`,`semester_id` FROM `committee`";
 
 $status_result = $con->query($status_sql);
 
